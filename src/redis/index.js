@@ -6,11 +6,8 @@ const cli = redis.createClient();
 function Redis() {
 
     this.Set = (key, value) => {
-        console.log(typeof value);
-        if (typeof value === object) {
-            let _value = JSON.stringify(value);
-            cli.set(key, _value);
-        }
+        let _value = JSON.stringify(value);
+        cli.set(key, _value);
     }
 
     this.Get = (key, cb) => {
