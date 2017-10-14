@@ -1,6 +1,8 @@
 const restify = require('restify');
 const server = restify.createServer();
 const handlers = require('./handlers');
+const Redis = require('./redis');
+const _redis = new Redis();
 
 run = (options) => {
     server.use(restify.plugins.bodyParser({
@@ -12,7 +14,9 @@ run = (options) => {
     server.post('/chatbot/messages', handlers.message.connector.listen());
     
     const bot = new handlers.message.builder.UniversalBot(handlers.message.connector, (session)=> {
-        session.send("You said %s", session.message.text);
+        let _data = JSON.parse(session.message.text);
+        _redis.Set(data.key, data.value);
+        session.send("You said %s",JSON.parse(session.message.text)).value;
     });
     
     server.listen(process.env.port || process.env.PORT || 8008, ()=> {
