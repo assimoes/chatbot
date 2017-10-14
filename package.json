@@ -1,0 +1,14 @@
+{
+  "name": "chatbot",
+  "version": "0.0.1",
+  "description": "A chat bot to nag people about pull requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "assimoes",
+  "license": "MIT",
+  "dependencies": {
+    "botbuilder": "^3.11.0"
+  }
+}
