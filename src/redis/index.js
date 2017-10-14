@@ -5,9 +5,12 @@ const cli = redis.createClient();
 
 function Redis() {
 
-    this.Set = (key, value) => {
-        let _value = JSON.stringify(value);
+    this.Set = (key, value, opts) => {
+        let _value = JSON.stringify(value);        
         cli.set(key, _value);
+        if (opts && opts.expire) {
+            cli.expire(key, opts.expire);
+        }
     }
 
     this.Get = (key, cb) => {

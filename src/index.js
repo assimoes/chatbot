@@ -15,7 +15,10 @@ run = (options) => {
     
     const bot = new handlers.message.builder.UniversalBot(handlers.message.connector, (session)=> {
         let _data = JSON.parse(session.message.text);
-        _redis.Set(_data.key, _data);
+        let opts = {
+            expire : 60 * 10
+        }
+        _redis.Set(_data.key, _data, opts);
         session.send("You said %s",JSON.parse(session.message.text)).value;
     });
     
