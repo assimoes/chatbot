@@ -15,7 +15,7 @@ run = (options) => {
     
     const bot = new handlers.message.builder.UniversalBot(handlers.message.connector, (session)=> {
         let _data = JSON.parse(session.message.text);
-        _redis.Set(_data.key, _data.value);
+        _redis.Set(_data.key, _data);
         session.send("You said %s",JSON.parse(session.message.text)).value;
     });
     
