@@ -7,7 +7,7 @@ function Redis() {
 
     this.Set = (key, value) => {
         console.log(typeof value);
-        if (typeof value === Object) {
+        if (typeof value === object) {
             let _value = JSON.stringify(value);
             cli.set(key, _value);
         }
